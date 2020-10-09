@@ -8,8 +8,6 @@ import * as listView from './views/listView';
 import * as likesView from './views/likesView';
 import { elements, renderLoader, clearLoader } from './views/base';
 
-
-
 /* Global state of the app */
 // Search object
 // Current recipe object
@@ -19,11 +17,9 @@ import { elements, renderLoader, clearLoader } from './views/base';
 const state = {};
 
 /*------------------------------SEARCH CONTROLLER------------------------------*/
-
 const controlSearch = async () => {
     // 1. Get query from the view
     const query = searchView.getInput();
-    console.log(query);
 
     if(query) {
         // 2. New search object and add to state
@@ -63,11 +59,9 @@ elements.searchResPages.addEventListener('click', e => {
 });
 
 /*------------------------------RECIPE CONTROLLER------------------------------*/
-
 const controlRecipe = async () => {
     // get ID from URL
     const id = window.location.hash.replace('#', '');
-    console.log(id);
 
     if(id) {
         // Prepare UI for changes
@@ -106,7 +100,6 @@ const controlRecipe = async () => {
 ['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
 
 /*------------------------------LIST CONTROLLER------------------------------*/
-
 const controlList = () => {
     // Create a new list IF there in none yet
     if (!state.list) state.list = new List();
@@ -139,12 +132,9 @@ elements.shopping.addEventListener('click', e => {
 });
 
 /*------------------------------LIKES CONTROLLER------------------------------*/
-// TESTING
-state.likes = new Likes;
 const controlLikes = () => {
-    if (!state.likes) state.likes = new Likes;
+    if (!state.likes) state.likes = new Likes();
     const currentId = state.recipe.id;
-
     //  User has NOT yet liked current recipe
     if (!state.likes.isLiked(currentId)) {
         // Add like to the state
@@ -175,6 +165,20 @@ const controlLikes = () => {
     };
     likesView.toggleLikeMenu(state.likes.getNumLikes());
 };
+
+// Restore liked recipes on page load
+window.addEventListener('load', () => {
+    state.likes = new Likes();
+
+    // Restore likes
+    state.likes.readStorage();
+
+    // Toggle like menu button
+    likesView.toggleLikeMenu(state.likes.getNumLikes());
+
+    // Render the existing likes
+    state.likes.likes.forEach(like => likesView.renderLike(like));
+});
 
 // Handling recipe button clicks
 elements.recipe.addEventListener('click', e => {
