@@ -42,5 +42,5 @@ Project is created with:
 
 ## Course
 
-The project was created with the [course](https://www.udemy.com/course/the-complete-javascript-course/learn/lecture/22649329?start=0#overview).
+The project was created with the [course](https://www.udemy.com/course/the-complete-javascript-course/).
 By implementing functionality step by step with the tutor. This project allowed me to deepen my knowledge of front-end developer tools and make me more familiar with Javascript
