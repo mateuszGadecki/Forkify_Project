@@ -1,7 +1,6 @@
 # Forkify
 
 ---
----
 Recipe search application after entering the keyword. This is a project created with the course. This project allowed me to get to know Javascript better.
 
 ---
@@ -28,7 +27,7 @@ Once the dependencies are installed, you can run `npm start` to start the applic
 - Increase the number of ingredients by selecting the number of servings per meal
 - Pagination added to avoid displaying endless recipes on one page
 
---
+---
 
 ## Technologies
 
