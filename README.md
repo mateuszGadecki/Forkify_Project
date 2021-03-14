@@ -1,6 +1,7 @@
 # Forkify
 
-============
+---
+---
 Recipe search application after entering the keyword. This is a project created with the course. This project allowed me to get to know Javascript better.
 
 ---
